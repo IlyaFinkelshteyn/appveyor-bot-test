@@ -16,6 +16,12 @@ install:
     
     appveyor-retry nuget sources remove -name nuget.org
     
+    nuget sources
+    
+    sleep 5
+    
+    appveyor-retry nuget sources remove -name nuget.org
+    
     appveyor-retry nuget sources add -name nuget.org -source https://api.nuget.org/v3/index.json    
 build_script:
 - ps: >-
