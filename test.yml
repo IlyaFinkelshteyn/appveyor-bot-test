@@ -27,11 +27,12 @@ build_script:
 - ps: >-
     Write-warning "Trying nuget restore. This will most probably hung as long as connectivity issue is not resolved. Normaly it takes about 20 seconds."
 
+    .\nuget-restore -verbosity detailed
 
-    $timeSpent = Measure-Command {.\nuget-restore -verbosity detailed}
+    #$timeSpent = Measure-Command {.\nuget-restore -verbosity detailed}
 
-    $timeSpent
+    #$timeSpent
 
-    if ($timeSpent.TotalMinutes -gt 1) {Write-warning "nuget restore took too long!"}
+    #if ($timeSpent.TotalMinutes -gt 1) {Write-warning "nuget restore took too long!"}
 on_finish:
 - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
